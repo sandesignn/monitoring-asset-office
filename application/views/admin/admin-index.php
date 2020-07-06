@@ -27,8 +27,8 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3><?= $today ?> Vote</h3>
-                            <p>Jumlah vote Hari ini</p>
+                            <h3>24 Staff</h3>
+                            <p>Jumlah Staff</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
@@ -41,9 +41,9 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3><?= $all ?> Vote</h3>
+                            <h3>100 Barang</h3>
 
-                            <p>Total Seluruh Vote</p>
+                            <p>Total Seluruh Barang</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -56,9 +56,9 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3><?= $kandidat ?> Kandidat</h3>
+                            <h3>4 Barang</h3>
 
-                            <p>Jumlah Kandidat</p>
+                            <p>Jumlah Barang Dipinjam</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -71,7 +71,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3><?= $adm ?> User</h3>
+                            <h3>5 User</h3>
 
                             <p>Total Admin</p>
                         </div>
@@ -89,29 +89,40 @@
                 <!-- /.Left col -->
                 <!-- right col (We are only adding the ID to make the widgets sortable)-->
                 <section class="col">
+                
+                <a class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal" href="#"><i class="fas fa-angle-double-up"></i> Pengembalian</a>
 
-                    <table id="example1" class="table table-bordered table-striped">
+                <table id="peminjaman" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>ID Kandidat</th>
-                                <th>Nama Kandidat</th>
-                                <th>Total Voting</th>
+                                <th>Foto</th>
+                                <th>Tanggal Peminjaman</th>
+                                <th>Kode Peminjaman</th>
+                                <th>No Inventori</th>
+                                <!-- <th>Nama Barang</th> -->
+                                <th>Nama Peminjam</th>
+                                <th>Tanggal Pengembalian</th>
+                                <th>Status Peminjaman</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <?php foreach ($id as $idk) : ?>
-                            <tr>
-                                <td><?= $idk['id_kandidat'] ?></td>
-                                <td><?= $idk['nama_kandidat'] ?></td>
-                                <td>
-                                    <a class="btn btn-warning" href="<?= base_url() ?>dashboard/cektotal/<?= $idk['id_kandidat'] ?>"><i class="nav-icon fas fa-edit"></i> Cek Total Vote</a>
-                                </td>
+                                    <?php foreach ($barang as $brg) : ?>
+                                <tr>
+                                    <td><img width="150px" src="<?= base_url() ?>/asset/img/barang/canon.jpg" alt=""></td>
+                                    <td><?= $brg['tanggal_pinjam'] ?></td>
+                                    <td><?= $brg['kode_peminjaman'] ?></td>
+                                    <td><?= $brg['no_inventory'] ?></td>
+                                    <!-- <td><?= $brg['nama_barang'] ?></td> -->
+                                    <td><?= $brg['nama_peminjam'] ?></td>
+                                    <td><?= $brg['tanggal_pengembalian'] ?></td>
+                                    <td><span class="badge badge-warning"><?= $brg['status'] ?></span></td>
+                                </tr>
+                            <?php endforeach; ?>
                             </tr>
-                        <?php endforeach; ?>
-                        </tr>
+
                         </tbody>
-                        
+
                     </table>
                 </section>
                 <!-- right col -->

@@ -12,10 +12,10 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>asset/js/countdown/jquery.countdown.min.js?v=1.0.0"></script>
     <link rel="stylesheet" href="<?= base_url('asset/') ?>css/main.css" />
-    <title>Login iVote</title>
+    <title>Login Admin PLN Inventory System</title>
 </head>
 <nav class="mycontainer">
-    <a href="<?= base_url() ?>">iVote.</a>
+    <a href="<?= base_url() ?>">Monitoring Inventaris.</a>
 
 </nav>
 
@@ -24,11 +24,11 @@
     <div class="mymain-container">
 
         <div class="jumbo-img-login">
-            <img width="500" src="<?= base_url('asset/') ?>img/login.png" alt="" />
+            <img width="500" src="<?= base_url('asset/') ?>img/newlogin.png" alt="" />
         </div>
 
         <div class="kotak_login">
-            <p class="tulisan_login">Login <br><b>Admin iVote.</b></p>
+            <p class="tulisan_login">Login Admin<br><b>PLN Inventaris System.</b></p>
 
 
             <form action="<?= base_url(); ?>dashboard" method="post">

@@ -12,28 +12,9 @@ class Dashboard extends CI_Controller
     {
         if (!$this->session->userdata('username')) {
             redirect('dashboard');
-        } else {
-            date_default_timezone_set("Asia/Bangkok");
-            $now = date("Y-m-d");
-            $nowin = $now."%";
-            $sql =  "SELECT * FROM `voting` WHERE date LIKE '$nowin'";
-            $ex = $this->db->query($sql);
-            $total = $ex->num_rows();
-            $data['today']=$total;
+        } else {            
 
-            $all=$this->db->get('voting')->num_rows();
-            $data['all']=$all;
-
-            $kandidat=$this->db->get('kandidat')->num_rows();
-            $data['kandidat']=$kandidat;
-            $adm=$this->db->get('admin')->num_rows();
-            $data['adm']=$adm;
-
-
-            $sql2= "SELECT DISTINCT voting.id_kandidat, kandidat.nama_kandidat FROM voting LEFT JOIN kandidat ON kandidat.id_kandidat = voting.id_kandidat";
-            $exe = $this->db->query($sql2);
-            $data['id'] = $exe->result_array();
-            
+            $data['barang'] = $this->db->get('tb_peminjaman')->result_array();
             $this->load->view('template/header.php');
             $this->load->view('admin/admin-index.php',$data);
             $this->load->view('template/footer.php');
@@ -45,7 +26,7 @@ class Dashboard extends CI_Controller
         $username = $this->input->post('username');
         $pass = $this->input->post('password');
 
-        $user = $this->db->get_where('admin', ['username' => $username])->row_array();
+        $user = $this->db->get_where('user', ['username' => $username])->row_array();
         $passFromDb = $user['password'];
         $hash = password_hash($passFromDb, PASSWORD_DEFAULT);
         if ($user) {  //jika user ada
@@ -59,9 +40,11 @@ class Dashboard extends CI_Controller
                 $this->session->set_flashdata('m', '<small class="warning-text text-danger form_name">Password salah!</small><br>');
             }
         } else {
-            $this->session->set_flashdata('m', '<small class="warning-text text-danger form_name">NIM tidak ditemukan!</small><br>');
+            $this->session->set_flashdata('m', '<small class="warning-text text-danger form_name">Username tidak ditemukan!</small><br>');
         }
     }
+
+
     public function kandidat()
     {
         if (!$this->session->userdata('username')) {
@@ -90,25 +73,26 @@ class Dashboard extends CI_Controller
             $this->load->view('template/footer.php');
         }
     }
-    public function tambah()
+    public function datapeminjaman()
     {
         if (!$this->session->userdata('username')) {
             redirect('dashboard');
         } else {
+            $data['data_peminjaman'] = $this->db->get('tb_peminjaman')->result_array();
             $this->load->view('template/header.php');
-            $this->load->view('admin/tambah.php');
+            $this->load->view('admin/data-peminjaman.php',$data);
             $this->load->view('template/footer.php');
         }
     }
-    public function waktu()
+    public function databarang()
     {
         if (!$this->session->userdata('username')) {
             redirect('dashboard');
         } else {
-            $data['waktu'] = $this->db->get('waktu')->row_array();
+            $data['data_barang'] = $this->db->get('tb_barang')->result_array();
             
             $this->load->view('template/header.php');
-            $this->load->view('admin/waktu.php', $data);
+            $this->load->view('admin/data-barang.php', $data);
             $this->load->view('template/footer.php');
         }
     }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dashboard</title>
+    <title>Dashboard Inventori Barang PT PLN</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -56,9 +56,9 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="<?= base_url() ?>dashboard" class="brand-link">
                 <img src="<?= base_url() ?>asset/dist/img/vote.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">iVote.</span>
+                <span class="brand-text font-weight-light">Inventori.</span>
             </a>
 
             <!-- Sidebar -->
@@ -69,7 +69,7 @@
                         <img src="<?= base_url() ?>asset/dist/img/user.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Rizky Ade Ningsih</a>
+                        <a href="#" class="d-block">Admin</a>
                     </div>
                 </div>
 
@@ -87,35 +87,26 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header">iVote Config</li>
+                        <li class="nav-header">Data Inventori</li>
                         <li class="nav-item">
-                            <a href="<?= base_url() ?>dashboard/kandidat" class="nav-link">
+                            <a href="<?= base_url() ?>dashboard/databarang" class="nav-link">
                                 <i class="nav-icon fas fa-plus-square"></i>
                                 <p>
-                                    Data Kandidat
+                                    Managemen Barang
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url() ?>dashboard/datapeminjaman" class="nav-link">
+                                <i class="nav-icon fas fa-user-clock"></i>
+                                <p>
+                                    Peminjaman Barang
                                     <span class="badge badge-info right">2</span>
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url() ?>dashboard/tambah" class="nav-link">
-                                <i class="nav-icon fas fa-user-clock"></i>
-                                <p>
-                                    Tambah Kandidat
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url() ?>dashboard/waktu" class="nav-link">
-                                <i class="nav-icon fas fa-clock"></i>
-                                <p>
-                                    Waktu Vote
-                                </p>
-                            </a>
-                        </li>
 
-
-                        <li class="nav-header">Akun Admin</li>
+                        <li class="nav-header">Managemen Admin</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-circle nav-icon"></i>
