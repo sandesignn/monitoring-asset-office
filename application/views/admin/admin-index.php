@@ -27,13 +27,13 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>24 Staff</h3>
-                            <p>Jumlah Staff</p>
+                            <h3><?= $total_barang ?> Barang</h3>
+                            <p>Jumlah Barang</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url() ?>/dashboard/databarang" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -41,14 +41,14 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>100 Barang</h3>
+                            <h3><?= $total_peminjaman ?> Pinjam</h3>
 
-                            <p>Total Seluruh Barang</p>
+                            <p>Total Seluruh Peminjaman</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url() ?>/dashboard/datapeminjaman" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -56,14 +56,14 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>4 Barang</h3>
+                            <h3><?= $total_pengembalian ?> Kembali</h3>
 
-                            <p>Jumlah Barang Dipinjam</p>
+                            <p>Jumlah Barang Dikembalikan</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url() ?>/dashboard/datapengembalian" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -71,7 +71,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>5 User</h3>
+                            <h3><?= $total_user ?> User</h3>
 
                             <p>Total Admin</p>
                         </div>
@@ -89,41 +89,12 @@
                 <!-- /.Left col -->
                 <!-- right col (We are only adding the ID to make the widgets sortable)-->
                 <section class="col">
-                
-                <a class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal" href="#"><i class="fas fa-angle-double-up"></i> Pengembalian</a>
 
-                <table id="peminjaman" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Foto</th>
-                                <th>Tanggal Peminjaman</th>
-                                <th>Kode Peminjaman</th>
-                                <th>No Inventori</th>
-                                <!-- <th>Nama Barang</th> -->
-                                <th>Nama Peminjam</th>
-                                <th>Tanggal Pengembalian</th>
-                                <th>Status Peminjaman</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                    <?php foreach ($barang as $brg) : ?>
-                                <tr>
-                                    <td><img width="150px" src="<?= base_url() ?>/asset/img/barang/canon.jpg" alt=""></td>
-                                    <td><?= $brg['tanggal_pinjam'] ?></td>
-                                    <td><?= $brg['kode_peminjaman'] ?></td>
-                                    <td><?= $brg['no_inventory'] ?></td>
-                                    <!-- <td><?= $brg['nama_barang'] ?></td> -->
-                                    <td><?= $brg['nama_peminjam'] ?></td>
-                                    <td><?= $brg['tanggal_pengembalian'] ?></td>
-                                    <td><span class="badge badge-warning"><?= $brg['status'] ?></span></td>
-                                </tr>
-                            <?php endforeach; ?>
-                            </tr>
-
-                        </tbody>
-
-                    </table>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Cari Data Peminjaman</label>
+                        <input class="form-control form-control-md mb-3" type="text" id="search" placeholder="Search..">
+                    </div>
+                    <div id="result"></div>
                 </section>
                 <!-- right col -->
             </div>

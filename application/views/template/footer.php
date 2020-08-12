@@ -55,6 +55,15 @@
 <script src="<?= base_url() ?>asset/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url() ?>asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="<?= base_url() ?>asset/plugins/summernote/summernote-bs4.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+
+
 <script>
     $(function() {
         // Summernote
@@ -66,6 +75,10 @@
         $("#example1").DataTable({
             "responsive": true,
             "autoWidth": false,
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel', 'pdf', 'print'
+            ]
         });
         $('#example2').DataTable({
             "paging": true,
@@ -85,8 +98,98 @@
             "autoWidth": false,
             "responsive": true,
         });
+        $('#table-peminjaman').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $("#cetak").DataTable({
+            "searching": false,
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    })
+</script>
+<script>
+    $(document).ready(function() {
+        $("cetak").DataTable({
+            "searching": false,
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    })
+</script>
+
+<!-- Live search -->
+<script>
+    $(document).ready(function() {
+
+        load_data();
+
+        function load_data(query) {
+            $.ajax({
+                url: "<?= base_url(); ?>dashboard/search",
+                method: "POST",
+                data: {
+                    query: query
+                },
+                success: function(data) {
+                    $('#result').html(data);
+                }
+            })
+        }
+
+        $('#search').keyup(function() {
+            var search = $(this).val();
+            if (search != '') {
+                load_data(search);
+            } else {
+                load_data();
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#filter').click(function() {
+            var from = $('#from').val();
+            var to = $('#to').val();
+            var status = $('#status').val();
+
+            if (from != '' && to != '' && status != '') {
+                $.ajax({
+                    url: "<?= base_url(); ?>dashboard/filter",
+                    method: "POST",
+                    data: {
+                        from: from,
+                        to: to,
+                        status: status
+                    },
+                    success: function(data) {
+                        $('#hasil').html(data);
+                    }
+                })
+            } else {
+                alert('Form data harus diisi');
+            }
+        })
+    })
+</script>
+
 
 
 </body>
